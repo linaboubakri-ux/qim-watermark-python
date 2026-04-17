@@ -22,7 +22,7 @@ jobs:
       - name: Build Docker image
         run: |
           docker build -t my-dockerhub-lyna156/myapp:${{ github.sha }} .
-          docker tag my-dockerhub-lyna156/myapp:${{ github.sha }} my-dockerhub-username/myapp:latest
+          docker tag my-dockerhub-lyna156/myapp:${{ github.sha }} my-dockerhub-lyna156/myapp:latest
 
       - name: Push Docker image
         run: |
