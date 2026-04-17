@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: 
+    branches:
       - "main"
 
 jobs:
@@ -19,3 +19,12 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
+      - name: Build Docker image
+        run: |
+          docker build -t my-dockerhub-lyna156/myapp:${{ github.sha }} .
+          docker tag my-dockerhub-lyna156/myapp:${{ github.sha }} my-dockerhub-username/myapp:latest
+
+      - name: Push Docker image
+        run: |
+          docker push my-dockerhub-lyna156/myapp:${{ github.sha }}
+          docker push my-dockerhub-lyna156/myapp:latest
