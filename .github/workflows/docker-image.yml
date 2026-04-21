@@ -26,5 +26,7 @@ jobs:
 
       - name: Push Docker image
         run: |
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           docker push my-dockerhub-lyna156/myapp:${{ github.sha }}
           docker push my-dockerhub-lyna156/myapp:latest
