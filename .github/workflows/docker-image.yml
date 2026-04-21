@@ -1,9 +1,5 @@
 name: Docker Image CI
-
-on:
-  push:
-    branches:
-      - "main"
+needs: test # Cette étape démarre après la réussite des tests
 
 jobs:
   build:
