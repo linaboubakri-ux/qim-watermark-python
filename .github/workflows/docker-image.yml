@@ -1,9 +1,21 @@
 name: Docker Image CI
-needs: test # Cette étape démarre après la réussite des tests
+
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+  build:
+    needs: test # ✅ correction ici uniquement
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
